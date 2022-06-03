@@ -19,4 +19,7 @@ export class CreateEmployeeComponent implements OnInit {
     })
   }
 
+  submit() {
+    console.log(this.employeeForm)
+  }
 }
