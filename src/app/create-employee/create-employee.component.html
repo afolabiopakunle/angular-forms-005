@@ -3,7 +3,7 @@
     <form (ngSubmit)="submit()" [formGroup]="employeeForm">
       <div class="mb-3">
         <label class="form-label" for="fullName">Full name</label>
-        <input aria-describedby="fullName" class="form-control" formControlName="fullName" id="fullName" type="text">
+        <input aria-describedby="fullName" [ngClass]="{'has-error': this.fullName!.errors && this.fullName!.touched }" class="form-control" formControlName="fullName" id="fullName" type="text">
       </div>
       <div class="mb-3">
         <label class="form-label" for="email">Email address</label>

@@ -14,7 +14,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      fullName: [''],
+      fullName: ['', Validators.required],
       email: [''],
       skills: this.fb.group({
         skillName: [''],
@@ -33,6 +33,9 @@ export class CreateEmployeeComponent implements OnInit {
     // })
   }
 
+  get fullName() {
+    return this.employeeForm.get('fullName')
+  }
   loadData() {
     this.employeeForm.setValue({
       fullName: 'Afolabi Opakunle',
