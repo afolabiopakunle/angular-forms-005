@@ -1,18 +1,45 @@
 <div class="row">
   <div class="col-md-6">
-    <form [formGroup]="employeeForm" (ngSubmit)="submit()">
+    <form (ngSubmit)="submit()" [formGroup]="employeeForm">
       <div class="mb-3">
-        <label for="fullName" class="form-label">Full name</label>
-        <input formControlName="fullName" type="text" class="form-control" id="fullName" aria-describedby="fullName">
+        <label class="form-label" for="fullName">Full name</label>
+        <input aria-describedby="fullName" class="form-control" formControlName="fullName" id="fullName" type="text">
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="email">
+        <label class="form-label" for="email">Email address</label>
+        <input aria-describedby="email" class="form-control" formControlName="email" id="email" type="email">
       </div>
-<div>
-
-</div>
-      <button class="btn btn-primary">Save</button>
+      <div formGroupName="skills">
+        <div class="mb-3">
+          <label class="form-label" for="fullName">Skill name</label>
+          <input aria-describedby="skillName" class="form-control" formControlName="skillName" id="skillName"
+                 type="text">
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="experienceInYears">Experience in years</label>
+          <input aria-describedby="experienceInYears" class="form-control" formControlName="experienceInYears"
+                 id="experienceInYears" type="number">
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" formControlName="proficiency" id="beginner" name="proficiency" type="radio"
+                 value="beginner">
+          <label class="form-check-label" for="beginner">Beginner</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" formControlName="proficiency" id="intermediate" name="proficiency"
+                 type="radio" value="intermediate">
+          <label class="form-check-label" for="intermediate">Intermediate</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" formControlName="proficiency" formControlName="proficiency" id="advanced"
+                 name="proficiency" type="radio" value="advanced">
+          <label class="form-check-label" for="advanced">Advanced</label>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button (click)="submit()" class="btn btn-primary">Save</button>
+        <button (click)="loadData()" class="btn btn-secondary">Load data</button>
+      </div>
     </form>
   </div>
 </div>

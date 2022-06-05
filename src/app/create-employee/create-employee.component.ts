@@ -24,8 +24,19 @@ export class CreateEmployeeComponent implements OnInit {
     })
   }
 
+  loadData() {
+    this.employeeForm.setValue({
+      fullName: 'Afolabi Opakunle',
+      email: 'afolabi@gmail.com',
+      skills: {
+        proficiency: 'advanced',
+        experienceInYears: 3,
+        skillName: 'Typescript'
+      }
+    })
+  }
   submit() {
     console.log(this.employeeForm);
-    this.employeeForm.reset()
   }
+
 }
