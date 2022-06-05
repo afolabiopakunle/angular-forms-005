@@ -10,6 +10,23 @@ export class CreateEmployeeComponent implements OnInit {
 
   employeeForm!: FormGroup;
 
+  validationMessages = {
+    fullName: {
+      required: 'Full name is required'
+    },
+    email: {
+      required: 'Email is required'
+    },
+    skillName: {
+      required: 'Skill name is required'
+    },
+    experienceInYears: {
+      required: 'Experience in years is required'
+    },
+    proficiency: {
+      required: 'Proficiency is required'
+    }
+  }
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -49,6 +66,19 @@ export class CreateEmployeeComponent implements OnInit {
   }
   submit() {
     console.log(this.employeeForm);
+  }
+
+  logKeyAndVals(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((key: string) => {
+      let abstractControl = formGroup.get(key);
+      if(abstractControl instanceof FormGroup) {
+        this.logKeyAndVals(abstractControl)
+      } else {
+        console.log(key + ": " + abstractControl?.disable())
+      }
+    })
+
+
   }
 
 }
