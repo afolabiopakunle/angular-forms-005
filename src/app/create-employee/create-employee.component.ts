@@ -27,6 +27,7 @@ export class CreateEmployeeComponent implements OnInit {
       required: 'Proficiency is required'
     }
   }
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -53,6 +54,7 @@ export class CreateEmployeeComponent implements OnInit {
   get fullName() {
     return this.employeeForm.get('fullName')
   }
+
   loadData() {
     this.employeeForm.setValue({
       fullName: 'Afolabi Opakunle',
@@ -64,20 +66,12 @@ export class CreateEmployeeComponent implements OnInit {
       }
     })
   }
+
   submit() {
     console.log(this.employeeForm);
   }
 
-  logKeyAndVals(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((key: string) => {
-      let abstractControl = formGroup.get(key);
-      if(abstractControl instanceof FormGroup) {
-        this.logKeyAndVals(abstractControl)
-      } else {
-        console.log(key + ": " + abstractControl?.disable())
-      }
-    })
-
+  logKeyAndVals() {
 
   }
 
