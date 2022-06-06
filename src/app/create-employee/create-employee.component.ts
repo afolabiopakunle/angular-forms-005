@@ -33,11 +33,11 @@ export class CreateEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
       fullName: ['', Validators.required],
-      email: [''],
+      email: ['', Validators.required],
       skills: this.fb.group({
-        skillName: [''],
-        proficiency: [''],
-        experienceInYears: ['']
+        skillName: ['', Validators.required],
+        proficiency: ['', Validators.required],
+        experienceInYears: ['', Validators.required]
       })
     })
     // this.employeeForm = new FormGroup({
@@ -71,8 +71,6 @@ export class CreateEmployeeComponent implements OnInit {
     console.log(this.employeeForm);
   }
 
-  logKeyAndVals() {
 
-  }
 
 }
