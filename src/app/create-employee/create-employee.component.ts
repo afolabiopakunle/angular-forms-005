@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-create-employee',
@@ -10,7 +10,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   employeeForm!: FormGroup;
 
-  validationMessages = {
+  validationMessages: any = {
     fullName: {
       required: 'Full name is required'
     },
@@ -71,6 +71,19 @@ export class CreateEmployeeComponent implements OnInit {
     console.log(this.employeeForm);
   }
 
-
+  checkErrors(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(key => {
+      let abstractControl = formGroup.controls[key];
+      if(abstractControl instanceof FormGroup) {
+        this.checkErrors(abstractControl);
+      } else {
+        if(abstractControl.invalid) {
+          console.log(abstractControl)
+          const messages = this.validationMessages[key]
+          console.log(messages)
+        }
+      }
+    })
+  }
 
 }
